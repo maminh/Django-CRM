@@ -1,4 +1,5 @@
 import os
+
 from celery.schedules import crontab
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -24,6 +25,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
+
+    'django_jenkins',
+
     'simple_pagination',
     'compressor',
     'common',
@@ -42,6 +46,29 @@ INSTALLED_APPS = [
     'invoices',
     'events',
 ]
+
+PROJECT_APPS = [
+    'common',
+    'accounts',
+    'cases',
+    'contacts',
+    'emails',
+    'leads',
+    'opportunity',
+    'planner',
+    'sorl.thumbnail',
+    'phonenumber_field',
+    'storages',
+    'marketing',
+    'tasks',
+    'invoices',
+    'events',
+]
+
+JENKINS_TASKS = (
+    'django_jenkins.tasks.run_pep8',
+    'django_jenkins.tasks.run_pyflakes'
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -170,7 +197,8 @@ elif STORAGE_TYPE == 's3-storage':
     STATIC_S3_PATH = "static"
     COMPRESS_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-    COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter', 'compressor.filters.cssmin.CSSMinFilter']
+    COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter',
+                            'compressor.filters.cssmin.CSSMinFilter']
     COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
     COMPRESS_REBUILD_TIMEOUT = 5400
 
@@ -261,7 +289,6 @@ try:
     from .dev_settings import *
 except ImportError:
     pass
-
 
 GP_CLIENT_ID = os.getenv('GP_CLIENT_ID', False)
 GP_CLIENT_SECRET = os.getenv('GP_CLIENT_SECRET', False)
