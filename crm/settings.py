@@ -53,7 +53,7 @@ PROJECT_APPS = [
     'cases',
     'contacts',
     'emails',
-    'leads',
+    # 'leads',
     'opportunity',
     'planner',
     'sorl.thumbnail',
