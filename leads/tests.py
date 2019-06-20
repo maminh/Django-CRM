@@ -277,23 +277,23 @@ class LeadsRemoveTestCase(TestLeadModel, TestCase):
         response = self.client.get(reverse('leads:remove_lead', args=(self.lead.id,)))
         self.assertEqual(response.status_code, 302)
 
-class UpdateLeadTestCase(TestLeadModel, TestCase):
-
-    def test_update_lead(self):
-        url = '/leads/' + str(self.lead.id) + '/edit/'
-        data = {
-            'title': "Creation", 'first_name': "marphy", 'last_name': "k",
-            'email': "meg@gmail.com", 'account': self.account,
-            'address_line': "",
-            'street': "Arcade enclave colony", 'city': "NewTown",
-            'state': "California",
-            'postcode': "579", 'country': "AD",
-            'phone': "+917894563452",
-            'website': "www.gmail.com", 'status': None,
-            'source': "", 'opportunity_amount': "700",
-            'description': "Iam an Lead", 'created_by': self.user}
-        response = self.client.post(url, data)
-        self.assertEqual(response.status_code, 200)
+# class UpdateLeadTestCase(TestLeadModel, TestCase):
+#
+#     def test_update_lead(self):
+#         url = '/leads/' + str(self.lead.id) + '/edit/'
+#         data = {
+#             'title': "Creation", 'first_name': "marphy", 'last_name': "k",
+#             'email': "meg@gmail.com", 'account': self.account,
+#             'address_line': "",
+#             'street': "Arcade enclave colony", 'city': "NewTown",
+#             'state': "California",
+#             'postcode': "579", 'country': "AD",
+#             'phone': "+917894563452",
+#             'website': "www.gmail.com", 'status': None,
+#             'source': "", 'opportunity_amount': "700",
+#             'description': "Iam an Lead", 'created_by': self.user}
+#         response = self.client.post(url, data)
+#         self.assertEqual(response.status_code, 200)
 
 
 class LeadDetailTestCase(TestLeadModel, TestCase):

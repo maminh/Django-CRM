@@ -94,23 +94,23 @@ class CommonModelTest(ObjectsCreation, TestCase):
         self.assertEqual(str(user.get_short_name()), user.username)
 
 
-class UserCreateTestCase(ObjectsCreation, TestCase):
-
-    # def test_user_create_url(self):
-    #     url = '/users/create/'
-    #     data = {'email': 'abc@micropyramid.com', 'username': 'user', 'role': 'USER'}
-    #     response = self.client.post(url,data)
-    #     self.assertEqual(response.status_code,200)
-
-    def test_user_create_invalid(self):
-        response = self.client.post('/users/create/', {
-            'email': 'admin@micropyramid.com',
-            'first_name': '',
-            'last_name': '',
-            'username': '',
-            'role': 'r',
-            'profile_pic': None})
-        self.assertEqual(response.status_code, 200)
+# class UserCreateTestCase(ObjectsCreation, TestCase):
+#
+#     # def test_user_create_url(self):
+#     #     url = '/users/create/'
+#     #     data = {'email': 'abc@micropyramid.com', 'username': 'user', 'role': 'USER'}
+#     #     response = self.client.post(url,data)
+#     #     self.assertEqual(response.status_code,200)
+#
+#     def test_user_create_invalid(self):
+#         response = self.client.post('/users/create/', {
+#             'email': 'admin@micropyramid.com',
+#             'first_name': '',
+#             'last_name': '',
+#             'username': '',
+#             'role': 'r',
+#             'profile_pic': None})
+#         self.assertEqual(response.status_code, 200)
 
 
 class PasswordChangeTestCase(ObjectsCreation, TestCase):
