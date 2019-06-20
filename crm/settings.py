@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 ]
 
 PROJECT_APPS = [
-    'common',
+    # 'common',
     'accounts',
     'cases',
     'contacts',
